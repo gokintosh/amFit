@@ -4,6 +4,8 @@ const path = require( "path" );
 
 const auth = require( "./auth" );
 
+const api=require("./api")
+const measuremets=require("./measurements")
 const home = {
   method: "GET",
   path: "/",
@@ -41,4 +43,4 @@ module.exports = [
   home,
   staticAssets,
   error404
-].concat( auth );
+].concat( auth ,api,measuremets);
