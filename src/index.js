@@ -4,17 +4,21 @@ const dotenv = require( "dotenv" );
 const Hapi = require( "@hapi/hapi" );
 
 const routes = require( "./routes" );
+const plugins=require("./plugins")
 
 const createServer = async () => {
   const server = Hapi.server( {
     port: process.env.PORT || 8080,
     host: process.env.HOST || "localhost"
   } );
-
+  // server.register(plugins);
+   await plugins.register(server);
   server.route( routes );
 
   return server;
 };
+
+
 
 const init = async () => {
   dotenv.config();
